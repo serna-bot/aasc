@@ -16,8 +16,8 @@ function Menu() {
         //searching algorithm
         //display data based on the search input, else return all data
         if (searchParam != "") {
-            const matches = categories.drinks.filter(element => element.startsWith(searchParam));
-            console.log(categories.drinks.filter(element => element.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())));
+            const matches = categories.drinks.filter(element => element.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase()));
+            console.log(matches);
             setData(matches);
         }
         else setData(categories.drinks);
