@@ -19,6 +19,7 @@ function Menu() {
     const handleData = async (searchParam) => {
         //searching algorithm
         //display data based on the search input, else return all data
+        setSlash(false);
         if (searchParam !== "") {
             //search by category
             if (categories.some(element => element.type.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase()))) {
