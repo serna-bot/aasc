@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import {categories} from "./categories";
+import './index.scss';
+import DrinkNames from './DrinkNames';
+import DrinkNamesOnly from './DrinkNamesOnly';
 
 //searching algorithm
 
@@ -10,17 +13,38 @@ function Menu() {
     useEffect(() => {
         handleData();
     }, []);
-    const [data, setData] = useState(categories.drinks); //move to backend if there is time
+    const [data, setData] = useState(categories); 
+    const [slash, setSlash] = useState(false);
 
     const handleData = async (searchParam) => {
         //searching algorithm
         //display data based on the search input, else return all data
-        if (searchParam != "") {
-            const matches = categories.drinks.filter(element => element.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase()));
-            console.log(matches);
-            setData(matches);
+        if (searchParam !== "") {
+            //search by category
+            if (categories.some(element => element.type.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase()))) {
+                const matches = categories.filter(element => element.type.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase()));
+                console.log("categories", matches);
+                setData(matches);
+            }
+            else {
+                const matches2 = categories.filter(element => element.value.some(el => el.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())));
+                console.log("checking items", matches2);
+                let tempList = [];
+                for (const item of matches2) {
+                    for (const val of item.value) {
+                        if (val.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())) {
+                            const tempObj = {"type": item.type, "value" : val};
+                            tempList.push(tempObj);
+                        }
+                    }
+                    console.log("found items", tempList);
+                    setSlash(true);
+                    setData(tempList);
+                }
+                
+            }
         }
-        else setData(categories.drinks);
+        else setData(categories);
     };
     //function for searching/event handler
     const onSearchChange = async (e) => {
@@ -31,11 +55,12 @@ function Menu() {
     return (
         <div>
             <input type = "text" placeholder='Search' onKeyUp={onSearchChange}></input>
+            
             <div>
-                {
-                    data.map(drink => {
-                        return <div>{drink}</div>
-                    })
+                { (() => {
+                    if (!slash) return <DrinkNames data = {data}/>;
+                    else return <DrinkNamesOnly data = {data}/>;
+                })()
                 }
             </div>
         </div>
