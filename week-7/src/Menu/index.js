@@ -20,7 +20,7 @@ function Menu() {
         //searching algorithm
         //display data based on the search input, else return all data
         setSlash(false);
-        if (searchParam !== "") {
+        if (searchParam) {
             //search by category
             console.log("searching for...", searchParam);
             if (categories.some(element => element.type.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase()))) {
@@ -32,7 +32,7 @@ function Menu() {
             else {
                 const matches2 = categories.filter(element => element.value.some(el => el.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())));
                 console.log("checking items", matches2);
-                if (matches2===undefined && matches2.length() === 0) {
+                if (matches2 === undefined || matches2.length === 0 || matches2 === null) {
                     console.log("no work");
                     setSlash(false);
                     setData(categories);
