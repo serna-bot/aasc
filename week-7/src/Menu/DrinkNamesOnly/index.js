@@ -8,7 +8,7 @@ function DrinkNamesOnly(props) {
             {
                 props.data.map(element => {
                     return (
-                        <div>
+                        <div className="elem">
                             {element.type}/{element.value}
                         </div>
                     )
