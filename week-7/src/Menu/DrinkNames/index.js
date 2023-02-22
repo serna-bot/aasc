@@ -3,6 +3,7 @@ import IndivAccordian from './IndivAccordian';
 
 function DrinkNames(props) {
     console.log("awooga", props.data);
+    //for each category render an accordian
 
     return (
         <div>

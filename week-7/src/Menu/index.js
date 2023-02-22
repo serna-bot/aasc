@@ -19,7 +19,8 @@ function Menu() {
     const handleData = async (searchParam) => {
         //searching algorithm
         //display data based on the search input, else return all data
-        setSlash(false);
+        setSlash(false); //default state to include categories and accordian
+        //there is a search param
         if (searchParam) {
             //search by category
             console.log("searching for...", searchParam);
@@ -30,15 +31,22 @@ function Menu() {
             }
             //search by singular item
             else {
+                //find all categories that contain at least one match
                 const matches2 = categories.filter(element => element.value.some(el => el.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())));
                 console.log("checking items", matches2);
+
+                //if there are no categories that match with the searchParam
                 if (matches2 === undefined || matches2.length === 0 || matches2 === null) {
                     console.log("no work");
                     setSlash(false);
                     setData(categories);
                 }
+
+                //there is at least one category that matches
                 else {
                     let tempList = [];
+                    //new format of data using the slashes, push to the list and set data to so
+                    //manually searching through the matches to find the exact match
                     for (const item of matches2) {
                         for (const val of item.value) {
                             if (val.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())) {
@@ -53,6 +61,7 @@ function Menu() {
                 }
             }
         }
+        //no searchParam
         else setData(categories);
     };
     //function for searching/event handler
