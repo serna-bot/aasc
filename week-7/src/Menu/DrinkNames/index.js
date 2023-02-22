@@ -10,9 +10,9 @@ function DrinkNames(props) {
                 {
                     props.data.map(val => {
                         return (
-                            <div>
-                                <div>{val.type}</div>
-                                <div>
+                            <div className='container'>
+                                <div className='head'>{val.type}</div>
+                                <div className='content'>
                                     {
                                         val.value.map(el => {
                                             return (

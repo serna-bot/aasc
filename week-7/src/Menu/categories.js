@@ -2,7 +2,7 @@ export const categories =
 [
     {"type" : "tea" , 
     "value" : [
-        "early gray", 
+        "earl gray", 
         "matcha",
         "rose",
         "honey lemon",

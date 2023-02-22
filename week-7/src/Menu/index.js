@@ -54,15 +54,18 @@ function Menu() {
     //html needs to show the search bar that changes searchParam based on event handler
     //also needs to display data
     return (
-        <div>
-            <input type = "text" placeholder='Search' onKeyUp={onSearchChange}></input>
+        <div className='entire'>
+            <div className='header'><h1>boba menu</h1></div>
+            <div className='content-container'>
+             <input type = "text" placeholder='Search' onKeyUp={onSearchChange}></input>
             
-            <div>
+             <div>
                 { (() => {
                     if (!slash) return <DrinkNames data = {data}/>;
                     else return <DrinkNamesOnly data = {data}/>;
                 })()
                 }
+             </div>
             </div>
         </div>
     );
