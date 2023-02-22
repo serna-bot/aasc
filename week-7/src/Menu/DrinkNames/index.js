@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
-import {categories} from "../categories.js";
+import { useState } from 'react';
 import './index.scss';
+import IndivDrinks from './IndivDrinks/index.js';
 
 function DrinkNames(props) {
     console.log("awooga", props.data);
+    const [accordianOn, setAccordian] = useState(false);
     return (
         <div>
             <div>
@@ -11,16 +12,12 @@ function DrinkNames(props) {
                     props.data.map(val => {
                         return (
                             <div className='container'>
-                                <div className='head'>{val.type}</div>
-                                <div className='content'>
-                                    {
-                                        val.value.map(el => {
-                                            return (
-                                                <div>
-                                                    {el}
-                                                </div>
-                                            );
-                                        })
+                                <div className='head' onClick={() => setAccordian(!accordianOn)}>
+                                    <div>{val.type}</div>
+                                    <div>{accordianOn? '-' : '+'}</div>
+                                </div>
+                                <div>
+                                    {accordianOn && <IndivDrinks data = {val}/>
                                     }
                                 </div>
                             </div>
