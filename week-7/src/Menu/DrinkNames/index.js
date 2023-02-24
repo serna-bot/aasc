@@ -8,12 +8,15 @@ function DrinkNames(props) {
     const [expand, setExpand] = useState(false)
 
     const expandOne = index => {
-        setExpand(false);
-        setState(state !== index ? index : -1);
+        setExpand(false); //resets the expand all so only one shows up at a time
+        setState(state !== index ? index : -1); 
+        //if the saved index is different than the index of the accordian that called the function, 
+        //change saved index to current else make it -1 to close it
     };
 
     const expandAll = async() => {
         setExpand(!expand);
+        //button to set whether to expand all
     }
 
     //for each category render an accordian

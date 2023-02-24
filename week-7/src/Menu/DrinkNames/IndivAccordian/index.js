@@ -2,12 +2,10 @@ import { useState } from 'react';
 import './index.scss'
 
 function IndivAccordian(props) {
-    //three things to add
-    // 1. if no search results then add some message [done]
-    // 2. when getting search results the tea and smootie shoud disappear [done]
-    // 3. if you opne one it should close the other
-    // 4. a button that expands all
-    //return styling based on above
+    
+    //return styling based on props
+    //on click passes its index to parent
+    //expands only based on the props.open passed in from the parent
     return (
         <div className='container'>
             <div className='head' onClick={() => props.expandOne(props.index)}>

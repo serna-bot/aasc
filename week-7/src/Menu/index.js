@@ -21,7 +21,9 @@ function Menu() {
         //searching algorithm
         //display data based on the search input, else return all data
         setSlash(false); //default state to include categories and accordian
-        setFound(true);
+        setFound(true); //error checker, false means to throw an error
+
+
         //there is a search param
         if (searchParam) {
             //search by category
@@ -40,7 +42,7 @@ function Menu() {
                 else {
                     let tempList = [];
                     //new format of data using the slashes, push to the list and set data to so
-                    //manually searching through the matches to find the exact match
+                    //push all items under found category into the return list
                     for (const item of matches) {
                         for (const val of item.value) {
                             const tempObj = {"type": item.type, "value" : val};
