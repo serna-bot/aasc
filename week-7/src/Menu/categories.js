@@ -8,12 +8,20 @@ export const categories =
         "honey lemon",
         "mango green"
     ]},
-    {"type" : "smoothies", 
+    {"type" : "smoothie", 
     "value" : [
         "mango", 
         "berry",
         "strawberry",
         "peach",
         "avocado"
+    ]},
+    {"type" : "coffee", 
+    "value" : [
+        "matcha", 
+        "latte",
+        "caramel latte",
+        "machiatto",
+        "cat poo"
     ]}
 ];

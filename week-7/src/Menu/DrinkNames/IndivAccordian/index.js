@@ -2,21 +2,20 @@ import { useState } from 'react';
 import './index.scss'
 
 function IndivAccordian(props) {
-    const [accordianOn, setAccordian] = useState(false); // to keep track if the button was clicked or not
     //three things to add
-    // 1. if no search results then add some message
-    // 2. when getting search results the tea and smootie shoud disappear
+    // 1. if no search results then add some message [done]
+    // 2. when getting search results the tea and smootie shoud disappear [done]
     // 3. if you opne one it should close the other
     // 4. a button that expands all
     //return styling based on above
     return (
         <div className='container'>
-            <div className='head' onClick={() => setAccordian(!accordianOn)}>
+            <div className='head' onClick={() => props.expandOne(props.index)}>
                 <div>{props.data.type}</div>
-                <div className='sign'>{accordianOn? '-' : '+'}</div>
+                <div className='sign'>{props.open? '-' : '+'}</div>
             </div>
             <div>
-                {accordianOn && props.data.value.map(el => {
+                {props.open && props.data.value.map(el => {
                         return (
                             <div className='content'>
                                 {el}
