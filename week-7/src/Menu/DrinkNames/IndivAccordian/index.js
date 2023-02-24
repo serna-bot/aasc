@@ -3,7 +3,11 @@ import './index.scss'
 
 function IndivAccordian(props) {
     const [accordianOn, setAccordian] = useState(false); // to keep track if the button was clicked or not
-
+    //three things to add
+    // 1. if no search results then add some message
+    // 2. when getting search results the tea and smootie shoud disappear
+    // 3. if you opne one it should close the other
+    // 4. a button that expands all
     //return styling based on above
     return (
         <div className='container'>
