@@ -8,7 +8,8 @@ function DrinkNames(props) {
     const [expand, setExpand] = useState(false)
 
     const expandOne = index => {
-        setState(state !== index ? index : -1)
+        setExpand(false);
+        setState(state !== index ? index : -1);
     };
 
     const expandAll = async() => {
