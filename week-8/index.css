@@ -1,43 +1,45 @@
 @font-face {
   font-family: fa;
-  src: url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300&display=swap');
+  src: url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300&display=swap");
 }
 body {
   margin: 20px;
-  font-family: 'League Spartan', sans-serif;
+  font-family: "League Spartan", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width:300px;
+  width: 300px;
 }
 
-.bod-contain{
+.bod-contain {
   background-color: #eeeeee;
   padding: 10px;
 }
+
 .menu {
   background: #333333;
-  font-size:18px;
+  font-size: 18px;
   color: #eeeeee;
-  font-weight:200;
-  padding:10px;
+  font-weight: 200;
+  padding: 10px;
   border-style: solid;
   border-radius: 10px 10px 0 0;
   border-bottom-color: #E6C2BF;
-  border-bottom-width:2px;
+  border-bottom-width: 2px;
   margin-bottom: 5px;
 }
+
 .collapsible {
   border-radius: 100%;
   background-color: #E6C2BF;
   color: #333333;
   border-style: hidden;
-  outline:none;
-  height:20px;
+  outline: none;
+  height: 20px;
 }
 
 .collapsible:hover {
   background-color: #DBB9B6;
   transition-property: background-color;
-  transition-duration:1s;
-  cursor:pointer;
-}
+  transition-duration: 1s;
+  cursor: pointer;
+}/*# sourceMappingURL=index.css.map */
