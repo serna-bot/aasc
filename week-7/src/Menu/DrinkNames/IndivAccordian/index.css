@@ -1,0 +1,24 @@
+.head {
+  font-weight: bold;
+  font-size: 18px;
+  border-style: solid;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  margin: 20px 20px 5px 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+.active, .head:hover {
+  background-color: #ccc;
+}
+
+.content {
+  background-color: #eeeeee;
+  padding: 5px 0 10px 0;
+}
+
+.sign {
+  margin-left: auto;
+}/*# sourceMappingURL=index.css.map */
