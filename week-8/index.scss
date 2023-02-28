@@ -1,0 +1,23 @@
+@font-face {
+  font-family: fa;
+  src: url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300&display=swap');
+}
+body {
+  margin: 0;
+  font-family: 'League Spartan', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.collapsible {
+  border-radius: 100%;
+  background-color: #E6C2BF;
+  color: #333333;
+  border-style: hidden;
+  outline:none;
+}
+
+.collapsible:hover {
+  border-style: solid;
+  border-color: #eeeeee;
+}
