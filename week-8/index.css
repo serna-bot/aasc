@@ -3,24 +3,28 @@
   src: url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300&display=swap");
 }
 body {
-  margin: 20px;
+  margin: 0;
   font-family: "League Spartan", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 300px;
+}
+
+.bod-contain {
+  background-color: #eeeeee;
+  padding: 10px;
 }
 
 .menu {
   background: #333333;
+  font-size: 18px;
   color: #eeeeee;
   font-weight: 200;
-  padding: 5px;
+  padding: 10px;
   border-style: solid;
   border-radius: 10px 10px 0 0;
   border-bottom-color: #E6C2BF;
   border-bottom-width: 2px;
   margin-bottom: 5px;
-  font-size: 24px;
 }
 
 .collapsible {
