@@ -9,9 +9,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input{
+  margin-left:20px;
+  border-radius: 10px;
+  height:20px;
+  margin: 10px 20px 10px 10px;
+}
+
 .bod-contain{
   background-color: #eeeeee;
   padding: 10px;
+  margin-left:10px;
 }
 .menu {
   background: #333333;
@@ -23,8 +31,10 @@ body {
   border-radius: 10px 10px 0 0;
   border-bottom-color: #E6C2BF;
   border-bottom-width:2px;
-  margin-bottom: 5px;
+  margin: 10px 10px 0 10px;
 }
+
+
 .collapsible {
   border-radius: 100%;
   background-color: #E6C2BF;
