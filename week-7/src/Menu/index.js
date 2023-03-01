@@ -17,20 +17,26 @@ function Menu() {
     const [slash, setSlash] = useState(false);
     const [found, setFound] = useState(true);
 
+    //matching Function, either the val starts with the whole search param, 
+    //some word in val starts with search param, or some word contains search param and search param is larger
+    //than a certain length (minLen)
     function partition (val, searchParam) {
         const minLen = 3;
-        for (const word of val.split(" ")) {
-            if (word.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())) {
-                console.log("partitioning", val, true);
-                return true;
-            }
-            else {
-                if (word.toLocaleLowerCase().includes(searchParam.toLocaleLowerCase()) && searchParam.length >= minLen) {
-                    console.log("partitioning by matching somewhere in the word", val, true);
+        if (!val.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())) {
+            for (const word of val.split(" ")) {
+                if (word.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())) {
+                    console.log("partitioning", val, true);
                     return true;
+                }
+                else {
+                    if (word.toLocaleLowerCase().includes(searchParam.toLocaleLowerCase()) && searchParam.length >= minLen) {
+                        console.log("partitioning by matching somewhere in the word", val, true);
+                        return true;
+                    }
                 }
             }
         }
+        else return true;
         return false;
     };
 
