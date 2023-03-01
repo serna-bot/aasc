@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import Menu from './Menu'
 import reportWebVitals from './reportWebVitals';
 
@@ -11,11 +12,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path='/' element={<Menu />} />
       </Routes>
-    </BrowserRouter></React.StrictMode>
+    </HashRouter></React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
