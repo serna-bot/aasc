@@ -17,6 +17,16 @@ function Menu() {
     const [slash, setSlash] = useState(false);
     const [found, setFound] = useState(true);
 
+    function partition (val, searchParam) {
+        for (const word of val.split(" ")) {
+            if (word.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())) {
+                console.log("partitioning", val, true);
+                return true;
+            }
+        }
+        return false;
+    };
+
     const handleData = async (searchParam) => {
         //searching algorithm
         //display data based on the search input, else return all data
@@ -28,8 +38,8 @@ function Menu() {
         if (searchParam) {
             //search by category
             console.log("searching for...", searchParam);
-            if (categories.some(element => element.type.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase()))) {
-                const matches = categories.filter(element => element.type.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase()));
+            if (categories.some(element => partition(element.type, searchParam))) {
+                const matches = categories.filter(element => partition(element.type, searchParam));
                 console.log("categories", matches);
                 setData(matches);
 
@@ -57,7 +67,7 @@ function Menu() {
             //search by singular item
             else {
                 //find all categories that contain at least one match
-                const matches2 = categories.filter(element => element.value.some(el => el.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())));
+                const matches2 = categories.filter(element => element.value.some(el => partition(el, searchParam)));
                 console.log("checking items", matches2);
                 
                 //if there are no categories that match with the searchParam
@@ -73,7 +83,7 @@ function Menu() {
                     //manually searching through the matches to find the exact match
                     for (const item of matches2) {
                         for (const val of item.value) {
-                            if (val.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())) {
+                            if (partition(val, searchParam)) {
                                 const tempObj = {"type": item.type, "value" : val};
                                 tempList.push(tempObj);
                             }
