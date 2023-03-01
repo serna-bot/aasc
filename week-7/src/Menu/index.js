@@ -18,10 +18,17 @@ function Menu() {
     const [found, setFound] = useState(true);
 
     function partition (val, searchParam) {
+        const minLen = 3;
         for (const word of val.split(" ")) {
             if (word.toLocaleLowerCase().startsWith(searchParam.toLocaleLowerCase())) {
                 console.log("partitioning", val, true);
                 return true;
+            }
+            else {
+                if (word.toLocaleLowerCase().includes(searchParam.toLocaleLowerCase()) && searchParam.length >= minLen) {
+                    console.log("partitioning by matching somewhere in the word", val, true);
+                    return true;
+                }
             }
         }
         return false;
