@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="index.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
     <link rel="stylesheet" href="index.css">
     <title>Week 8 PHP Search Filter</title>
     <link rel="stylesheet" href="./index.css" type="text/css">
@@ -10,8 +10,8 @@
     <div class="contain">
     <div class="header">
       <header class="menu">boba menu</header>
-      <input type="text" name="search" placeholder="Search">
-      <button class="expand-options">Expand options</button>
+      <input id="search" name="search" type="text" placeholder="Search" oninput="onSearchChange()">
+      <button class="expand-options" onclick="expandAccord()">Expand options</button>
     </div>
     <div class="bod-contain">
       <div class="ddcontain" id="tea">
