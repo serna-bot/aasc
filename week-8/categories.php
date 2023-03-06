@@ -74,13 +74,16 @@ function search_drinks($categories, $searchParam) {
         }
     }
     //filter by singular items
-    if (!$ret_list) echo "No results";
+    if (!$ret_list) echo "{\"retAll\":\"false\",\"data\":". "\"No results\"" . "}";
     else {
-        foreach ($ret_list as $val) {
-            echo $val -> type . "/" . $val -> drink . ";";
-        }
+        $myJSON = json_encode($ret_list);
+        echo "{\"retAll\":\"false\",\"data\":". $myJSON . "}";
     }
 }
 
-search_drinks($categories, $searchParam)
+if ($searchParam === null || trim($searchParam) === '') {
+    $myJSON = json_encode($categories);
+    echo "{\"retAll\":\"true\",\"data\":". $myJSON . "}";
+}
+else search_drinks($categories, $searchParam);
 ?>
