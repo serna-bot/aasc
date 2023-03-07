@@ -74,16 +74,16 @@ function search_drinks($categories, $searchParam) {
         }
     }
     //filter by singular items
-    if (!$ret_list) echo "{\"retAll\":\"false\",\"data\":". "\"No results\"" . "}";
+    if (!$ret_list) echo "{\"retAll\":false,\"data\":". "\"No results\"" . "}";
     else {
         $myJSON = json_encode($ret_list);
-        echo "{\"retAll\":\"false\",\"data\":". $myJSON . "}";
+        echo "{\"retAll\":false,\"data\":". $myJSON . "}";
     }
 }
 
 if ($searchParam === null || trim($searchParam) === '') {
     $myJSON = json_encode($categories);
-    echo "{\"retAll\":\"true\",\"data\":". $myJSON . "}";
+    echo "{\"retAll\":true,\"data\":". $myJSON . "}";
 }
 else search_drinks($categories, $searchParam);
 ?>
