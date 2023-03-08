@@ -11,21 +11,18 @@ function expandAll(el) {
         expand = true;
         for (var i = 0; i < accord.length; i++) {
             const curr = accord[i].classList;
-            curr.toggle("collapsed");
-            var cont = accord[i].nextElementSibling;
-            if (cont.style.maxHeight) cont.style.maxHeight = null;
-            else cont.style.maxHeight = cont.scrollHeight+"px";
+            if (!curr.contains("collapsed")) {
+                curr.toggle("collapsed");
+                var cont = accord[i].nextElementSibling;
+                if (cont.style.maxHeight) cont.style.maxHeight = null;
+                else cont.style.maxHeight = cont.scrollHeight+"px";
+            }
         }
     }
     else {
         el.setAttribute('value', "1");
         expand = false;
-        for (var i = 0; i < accord.length; i++) {
-            const curr = accord[i].classList;
-            curr.remove("collapsed");
-            var cont = accord[i].nextElementSibling;
-            cont.style.maxHeight = null;
-        }
+        closeAllDivs();
     }
 }
 
@@ -84,7 +81,14 @@ function updateDivs(jsonVal) {
         for (var i = 0; i < accord.length; i++) {
             accord[i].addEventListener("click", function(e) {
                 const curr = e.target.classList;
-                if (curr.contains("collapsed")) {
+                if (curr.contains("collapsed") && expand) {
+                    var expandAll = document.getElementsByClassName("expandAll");
+                    console.log(expandAll);
+                    expandAll[0].setAttribute('value', "1");
+                    expand = false;
+                    closeAllDivs();
+                }
+                else if (curr.contains("collapsed")) {
                     e.target.classList.remove("collapsed");
                     var cont = e.target.nextElementSibling;
                     cont.style.maxHeight = null;
@@ -103,6 +107,17 @@ function updateDivs(jsonVal) {
         }
     });
 }
+
+function closeAllDivs() {
+    var accord = document.getElementsByClassName("headtext");
+    for (var i = 0; i < accord.length; i++) {
+        const curr = accord[i].classList;
+        curr.remove("collapsed");
+        var cont = accord[i].nextElementSibling;
+        cont.style.maxHeight = null;
+    }
+}
+
 
 function loadCat() {
     xhttp.open("POST", "./categories.php", true);
