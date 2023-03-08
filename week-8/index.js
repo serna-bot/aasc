@@ -3,12 +3,18 @@ const xhttp = new XMLHttpRequest();
 // start with css only
 var expand  = false;
 
+
+//button on change for the expand all
 function expandAll(el) {
+    //get the stored value in the button
     var val = el.getAttribute('value');
+    //getting the accordian
     var accord = document.getElementsByClassName("headtext");
-    if (val === "1") {
+    if (val === "1") { //currently expand all is false, want to make it true
         el.setAttribute('value', "0");
         expand = true;
+
+        //loop through the accord list and check if it is currently closed, if it is open it
         for (var i = 0; i < accord.length; i++) {
             const curr = accord[i].classList;
             if (!curr.contains("collapsed")) {
@@ -19,6 +25,7 @@ function expandAll(el) {
             }
         }
     }
+    // close all the divs
     else {
         el.setAttribute('value', "1");
         expand = false;
@@ -33,10 +40,13 @@ function clearDivs() {
     }
 }
 
+//loading the menu vals
+
 function loadDivs(jsonVal, _callback) {
     var iDiv = document.createElement('div');
     iDiv.id = 'bod-contain';
     iDiv.className = 'bod-contain';
+    //return the accordian
     if (jsonVal.retAll) {
         for (const type of jsonVal.data) {
             var innerDiv = document.createElement('div');
@@ -54,45 +64,52 @@ function loadDivs(jsonVal, _callback) {
             iDiv.appendChild(drinksDiv);
         }
     }
+    //return individual search values or error
     else {
+        //no error
         if (jsonVal.data !== "No results") {
             var drinksDiv = document.createElement('div');
             for (const drink of jsonVal.data) {
                 var drinkDiv = document.createElement('div');
+                drinkDiv.className = "searchDrink";
                 drinkDiv.innerHTML = `${drink.type}/${drink.drink}`;
                 drinksDiv.appendChild(drinkDiv);
             }
             iDiv.appendChild(drinksDiv);
         }
+        //error 
         else {
             var error = document.createElement('div');
+            error.className = "error";
             error.innerHTML = "No Results Found.";
             iDiv.appendChild(error);
         }
     }
-    document.getElementsByTagName('body')[0].appendChild(iDiv);
+    document.getElementsByTagName('body')[0].appendChild(iDiv); //append the whole divs we created to the body
     _callback();
 }
 
 function updateDivs(jsonVal) {
     loadDivs(jsonVal, function() {
-        console.log('huzzah, I\'m done!');
         var accord = document.getElementsByClassName("headtext");
         for (var i = 0; i < accord.length; i++) {
+            // adding an event listener to each accordian tab
             accord[i].addEventListener("click", function(e) {
                 const curr = e.target.classList;
+                //if we already expanded all of them, we want it to close on click
                 if (curr.contains("collapsed") && expand) {
                     var expandAll = document.getElementsByClassName("expandAll");
-                    console.log(expandAll);
                     expandAll[0].setAttribute('value', "1");
                     expand = false;
                     closeAllDivs();
                 }
+                //else if its open, so close it
                 else if (curr.contains("collapsed")) {
                     e.target.classList.remove("collapsed");
                     var cont = e.target.nextElementSibling;
                     cont.style.maxHeight = null;
                 }
+                //else it is not open, loop through to close all the other ones, then set it to be open
                 else {
                     for (var j = 0; j < accord.length; j++) {
                         accord[j].classList.remove("collapsed");
@@ -110,6 +127,7 @@ function updateDivs(jsonVal) {
 
 function closeAllDivs() {
     var accord = document.getElementsByClassName("headtext");
+    //loop through and remove all the open tabs
     for (var i = 0; i < accord.length; i++) {
         const curr = accord[i].classList;
         curr.remove("collapsed");

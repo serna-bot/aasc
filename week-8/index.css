@@ -8,6 +8,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 35%;
+  background-image: url(./grid-background.jpg);
+  background-size: 30%;
 }
 
 input {
@@ -104,4 +106,21 @@ button:hover {
   font-size: 15px;
   color: #615656;
   padding: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.searchDrink {
+  font-size: 15px;
+  color: #615656;
+  padding: 5px;
+  margin-bottom: 3px;
+  margin-left: 5px;
+}
+
+.error {
+  font-size: 18px;
+  color: #612323;
+  padding: 5px;
+  margin-left: 5px;
 }/*# sourceMappingURL=index.css.map */
